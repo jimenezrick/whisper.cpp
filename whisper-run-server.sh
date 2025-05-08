@@ -18,5 +18,5 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 	cmake --build build -j8 --config Release
 
 	./models/download-ggml-model.sh $MODEL || true
-	$SERVER --model models/ggml-$MODEL.bin
+	$SERVER --model models/ggml-$MODEL.bin --language auto
 )

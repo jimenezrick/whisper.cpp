@@ -12,10 +12,10 @@ curl -s 127.0.0.1:8080/inference -H "Content-Type: multipart/form-data" -F file=
 if [[ $1 = emacsclient ]]
 then
 	emacsclient -e "(with-current-buffer \"${EMACS_BUFFER}\" (insert \"$(tr "\n" " " </tmp/whisper.txt | sed 's/^[ \t]*//;s/[ \t]*$//')\"))"
-elif [[ $1 = xdotool ]]
+elif [[ $1 = print ]]
 then
-	xdotool type --delay=0 "$(tr "\n" " " </tmp/whisper.txt | sed 's/^[ \t]*//;s/[ \t]*$//')"
-else
 	cat /tmp/whisper.txt | tr "\n" " " | sed 's/^[ \t]*//;s/[ \t]*$//'
 	echo
+else
+	xdotool type --delay=0 "$(tr "\n" " " </tmp/whisper.txt | sed 's/^[ \t]*//;s/[ \t]*$//')"
 fi
