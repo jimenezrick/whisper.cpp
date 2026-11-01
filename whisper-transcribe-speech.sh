@@ -3,7 +3,7 @@
 set -e
 
 : ${EMACS_BUFFER:='*ChatGPT*'}
-SOX_EFFECT='silence 1 0.2 2% 1 1.0 2%'
+SOX_EFFECT='silence 1 0.05 1% 1 1.0 2%'
 
 # Can also use: ffmpeg -f alsa -i default -ar 16000 -y /tmp/whisper.wav
 uxterm -r -e bash -c "env AUDIODRIVER=alsa rec --rate 16k --type wav /tmp/whisper.wav $SOX_EFFECT"
